@@ -1,0 +1,15 @@
+{
+  "name": "deeplogitech-assignment-md-arbaaz",
+  "version": "1.0.0",
+  "description": "Pls find all the files if you require any additional file pls mail me i will send it asap Thank you",
+  "main": "Answer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3",
+    "request": "^2.88.2"
+  }
+}
