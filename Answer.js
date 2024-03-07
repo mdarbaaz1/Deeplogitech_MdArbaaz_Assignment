@@ -14,13 +14,6 @@ https.get(url, (res) => {
 
   res.on('end', () => {
     processHtmlData(body);
-    // fs.writeFile("Time.html", body, (err) => {
-    //   if (err) {
-    //     console.error(err);
-    //     return;
-    //   }
-      
-    // });
   });
 }).on('error', (err) => {
   console.error("Error making HTTP request:", err);
@@ -49,8 +42,11 @@ var http = require('http');
 
 http.createServer(function (req, res) {
   res.writeHead(200, { 'Content-Type': 'application/json' });
-res.write(JSON.stringify(resultarray));
-res.end();
-}).listen(3000, function(){
- console.log("server listening at port 3000"); //the server object listens on port 3000
+  var url = req.url;
+ if(url ==='/getTimeStories'){
+    res.write(JSON.stringify(resultarray)); 
+    res.end();
+ }
+}).listen(8000, function(){
+ console.log("server listening at port 8000"); //the server object listens on port 3000
 });
