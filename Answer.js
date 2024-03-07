@@ -32,7 +32,7 @@ function processHtmlData(htmlContent) {
     const title = data_part[4].split('>')[1].split("</h3")[0]; //  Here i am extracting the title from the each latest story
 
     resultarray.push({title,link});
-
+    
     console.log('\n');
     console.log('Title : ' + title);
     console.log('Link : ' + link);
