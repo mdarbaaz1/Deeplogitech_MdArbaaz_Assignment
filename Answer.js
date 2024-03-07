@@ -27,10 +27,13 @@ function processHtmlData(htmlContent) {
   for (let i = 1; i <= 6; i++) {
     const answer_part = data_required[i]; 
     const data_part = answer_part.split('"');
+    // console.log(data_part);
     const link = "https://time.com" + data_part[1];// Here i am extracting the link from the each latest story
     const title = data_part[4].split('>')[1].split("</h3")[0]; //  Here i am extracting the title from the each latest story
+
     resultarray.push({title,link});
-    console.log("        ");
+
+    console.log('\n');
     console.log('Title : ' + title);
     console.log('Link : ' + link);
   }
@@ -47,5 +50,5 @@ http.createServer(function (req, res) {
     res.end();
  }
 }).listen(8000, function(){
- console.log("server listening at port 8000"); //the server object listens on port 3000
+ console.log("server listening at port 8000"); //the server object listens on port 8000
 });
