@@ -27,7 +27,7 @@ function processHtmlData(htmlContent) {
     const answer_part = data_required[i]; 
     const data_part = answer_part.split(/(?<!\\)"/); 
     const link = "https://time.com" + data_part[1].replace(/\\/g, ''); // Extract title without splitting if there's a backslash before "\""
-    const title = data_part[4].split(/(?<!\\)>/)[1].replace(/\\/g, '').split("</h3")[0]; // Extract title without splitting if there's a backslash before ">"
+    const title = data_part[4].split(/(?<!\\)>/)[1].replace(/\\/g, '').split(/(?<!\\)<\/h3/)[0]; // Extract title without splitting if there's a backslash before ">"
 
     resultarray.push({title, link});
     
