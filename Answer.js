@@ -1,6 +1,6 @@
 const https = require("https");
 
-const resultarray = []
+const resultarray = [];
 
 const url = "https://time.com/";
 
@@ -20,18 +20,16 @@ https.get(url, (res) => {
 
 function processHtmlData(htmlContent) {
  
-  const data_required = htmlContent.split('<li class="latest-stories__item">'); // Here i am Extracting the top 6 latest stories 
-  // console.log(data_required);
+  const data_required = htmlContent.split('<li class="latest-stories__item">'); 
   console.log("These are the latest 6 stories from times.com");
 
   for (let i = 1; i <= 6; i++) {
     const answer_part = data_required[i]; 
-    const data_part = answer_part.split('"');
-    // console.log(data_part);
-    const link = "https://time.com" + data_part[1];// Here i am extracting the link from the each latest story
-    const title = data_part[4].split('>')[1].split("</h3")[0]; //  Here i am extracting the title from the each latest story
+    const data_part = answer_part.split(/(?<!\\)"/); 
+    const link = "https://time.com" + data_part[1].replace(/\\/g, ''); // Extract title without splitting if there's a backslash before "\""
+    const title = data_part[4].split(/(?<!\\)>/)[1].replace(/\\/g, '').split("</h3")[0]; // Extract title without splitting if there's a backslash before ">"
 
-    resultarray.push({title,link});
+    resultarray.push({title, link});
     
     console.log('\n');
     console.log('Title : ' + title);
@@ -40,15 +38,15 @@ function processHtmlData(htmlContent) {
 }
 
 // Creating a server 
-var http = require('http');
+const http = require('http');
 
 http.createServer(function (req, res) {
   res.writeHead(200, { 'Content-Type': 'application/json' });
-  var url = req.url;
+  const url = req.url;
  if(url ==='/getTimeStories'){
     res.write(JSON.stringify(resultarray)); 
     res.end();
  }
 }).listen(8000, function(){
- console.log("server listening at port 8000"); //the server object listens on port 8000
+ console.log("server listening at port 8000");
 });
