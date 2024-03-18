@@ -7,7 +7,9 @@ i have put the pictures of my output pls have a look at it
 i am fetching the data from the time.com website which i am storing in a string body and then i am waiting until i get all the source code in the body and once i have all the data from the website then i am processing the data which is a function 
 
 then i am splitting the data with the specified target of the latest stories which will give me the top 6 stories from the website 
-now in data_required i have my stories now i am running a for loop to further split each of the story to get my title and the link of these stories and pushing these in a resultarray 
+now in data_required i have my stories now i am running a for loop to further split each of the story to get my title and the link of these stories and pushing these in a resultarray
+
+if there is a title in which there is a ">" sign which i dont want to split then i am adding a negative lookbehind assertion whoch will see if the seperator is preceded by a \ or not if it is preceded then it will not split there but if it is not then it will split at the seperator
 
 now i am creating a local server in which while the code is running if someone calls a request at getTimeStories end point then if the url matches they will recieve a JSON response of the result as shown in the images
 
